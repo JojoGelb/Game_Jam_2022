@@ -50,6 +50,7 @@ MonoBehaviour:
   openingB: 0
   tailleCarreau: 1
   width: 10
+  roomType: 0
   roomState: 0
   floorPrefab: {fileID: 8875079711244416056, guid: 733b95440ab1b844f86a6fb3a016d0bf, type: 3}
-  wallPrefab: {fileID: 9102064345012974263, guid: da90f99d857ea854cb01af47f8f9cbd1, type: 3}
+  wallPrefab: {fileID: 406355004237722533, guid: 0bc36bcb88e09e248b5227c129ced12e, type: 3}

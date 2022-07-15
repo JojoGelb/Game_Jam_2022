@@ -22,7 +22,7 @@ public class PlayersMovement : MonoBehaviour
     {
         ct = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
-        moveAction = playerInput.actions["Move"];
+        moveAction = playerInput.actions["Move"] ;
         dashAction = playerInput.actions["Dash"];
     }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Room: MonoBehaviour
 {
     public enum RoomState {ready, onGoing, finished};
+    public enum RoomType {normal, spawn, chest, boss};
 
     [Header("Infos a ne pas changer")]
     public Vector2Int position;
@@ -19,19 +20,23 @@ public class Room: MonoBehaviour
     private int maxRoomSize;
     public int width;
 
+    public RoomType roomType = RoomType.normal;
     public RoomState roomState = RoomState.ready;
 
     [Header("Rooms prefabs")]
     public GameObject floorPrefab;
     public GameObject wallPrefab;
 
-    public virtual void setRoom(Vector2Int position, int width, int maxRoomSize)
+    public virtual void setRoom(Vector2Int position, int width, int maxRoomSize, RoomType type)
     {
+        roomType = type;
         this.width = width;
         this.maxRoomSize = maxRoomSize;
 
         transform.rotation = Quaternion.identity;
         this.position = position;
+
+        if (roomType != RoomType.normal) width = maxRoomSize;
 
         for (int i = 0; i < width; i++)
         {
@@ -43,6 +48,27 @@ public class Room: MonoBehaviour
             }
         }
         transform.position = new Vector3(position.x * maxRoomSize * tailleCarreau + position.x*3*tailleCarreau, position.y * maxRoomSize * tailleCarreau +(position.y*3*tailleCarreau),0);
+    }
+
+    public virtual void setRoom(Vector2Int position, int width, int maxRoomSize)
+    {
+        roomType = RoomType.normal;
+        this.width = width;
+        this.maxRoomSize = maxRoomSize;
+
+        transform.rotation = Quaternion.identity;
+        this.position = position;
+
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < width; j++)
+            {
+                GameObject floor = Instantiate(floorPrefab, new Vector3(((maxRoomSize - width) / 2) * tailleCarreau + i * tailleCarreau, ((maxRoomSize - width) / 2) * tailleCarreau + j * tailleCarreau, 0), Quaternion.identity);
+                floor.transform.parent = transform;
+                floor.name = "floor " + i + " " + j;
+            }
+        }
+        transform.position = new Vector3(position.x * maxRoomSize * tailleCarreau + position.x * 3 * tailleCarreau, position.y * maxRoomSize * tailleCarreau + (position.y * 3 * tailleCarreau), 0);
     }
 
     public void setVoisins(bool left, bool right, bool top, bool bottom)

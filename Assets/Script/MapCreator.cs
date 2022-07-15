@@ -50,7 +50,7 @@ public class MapCreator : MonoBehaviour
         bool openT = true;
 
 
-        room.setRoom(new Vector2Int(0, 0), width, maxRoomSize);
+        room.setRoom(new Vector2Int(0, 0), width, maxRoomSize, Room.RoomType.spawn);
         room.setVoisins(openL, openR, openT, openB);
         room.roomState = Room.RoomState.finished;
         rooms.Add(room);
@@ -62,7 +62,7 @@ public class MapCreator : MonoBehaviour
         roo = Instantiate(BasicRoom, new Vector3(0, 0, 0), Quaternion.identity);
         roo.transform.parent = transform;
         room = roo.GetComponent<Room>();
-        room.setRoom(new Vector2Int(0, 1), width, maxRoomSize);
+        room.setRoom(new Vector2Int(0, 1), width, maxRoomSize, Room.RoomType.normal);
         room.setVoisins(true, true, true, true);
         rooms.Add(room);
         queue.Enqueue(room);
@@ -467,7 +467,77 @@ public class MapCreator : MonoBehaviour
             }
         }
 
+        addBossRoom();
+
         bugPatch();
+    }
+
+    void addBossRoom()
+    {
+        GameObject roo;
+        Room room;
+        int indexMax = 0;
+        int directionMax = 0;
+
+        int direction = Random.Range(0, 4);
+        switch (direction)
+        {
+            case 0:
+                for (int i = 0; i < rooms.Count; i++)
+                {
+                    if(rooms[i].position.x < directionMax)
+                    {
+                        indexMax = i;
+                        directionMax = rooms[i].position.x;
+                    }
+                }
+                rooms[indexMax].openingL = true;
+                roo = Instantiate(BasicRoom, new Vector3(0, 0, 0), Quaternion.identity);
+                roo.transform.parent = transform;
+                room = roo.GetComponent<Room>();
+                room.setRoom(new Vector2Int(rooms[indexMax].position.x - 1, rooms[indexMax].position.y), maxRoomSize*2, maxRoomSize*2,Room.RoomType.boss);
+                room.setVoisins(false, true, false, false);
+                break;
+            case 1:
+                for (int i = 0; i < rooms.Count; i++)
+                {
+                    if (rooms[i].position.x > directionMax)
+                    {
+                        indexMax = i;
+                        directionMax = rooms[i].position.x;
+                    }
+                }
+                rooms[indexMax].openingR = true;
+                roo = Instantiate(BasicRoom, new Vector3(0, 0, 0), Quaternion.identity);
+                roo.transform.parent = transform;
+                room = roo.GetComponent<Room>();
+                room.setRoom(new Vector2Int(rooms[indexMax].position.x - 1, rooms[indexMax].position.y), maxRoomSize * 2, maxRoomSize * 2, Room.RoomType.boss);
+                room.setVoisins(true, false, false, false);
+                break;
+            case 2:
+                for (int i = 0; i < rooms.Count; i++)
+                {
+                    if (rooms[i].position.y < directionMax)
+                    {
+                        indexMax = i;
+                        directionMax = rooms[i].position.y;
+                    }
+                }
+                break;
+            case 3:
+                for (int i = 0; i < rooms.Count; i++)
+                {
+                    if (rooms[i].position.y > directionMax)
+                    {
+                        indexMax = i;
+                        directionMax = rooms[i].position.y;
+                    }
+                }
+                break;
+        }
+
+        
+
     }
 
     //Some walls created on possible path
