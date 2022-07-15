@@ -35,19 +35,65 @@ public class Room: MonoBehaviour
 
         transform.rotation = Quaternion.identity;
         this.position = position;
-
-        if (roomType != RoomType.normal) width = maxRoomSize;
+        int temporatyMaxRoomSize = maxRoomSize;
+        if (type == RoomType.boss)
+        {
+            temporatyMaxRoomSize = 2 * maxRoomSize; 
+            width = temporatyMaxRoomSize;
+        }
 
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < width; j++)
             {
-                GameObject floor = Instantiate(floorPrefab, new Vector3(((maxRoomSize - width)/2)*tailleCarreau + i * tailleCarreau , ((maxRoomSize - width) / 2) * tailleCarreau + j * tailleCarreau,0), Quaternion.identity);
+                GameObject floor = Instantiate(floorPrefab, new Vector3(((temporatyMaxRoomSize - width)/2)*tailleCarreau + i * tailleCarreau , ((temporatyMaxRoomSize - width) / 2) * tailleCarreau + j * tailleCarreau,0), Quaternion.identity);
                 floor.transform.parent = transform;
                 floor.name = "floor " + i + " " + j;
             }
         }
-        transform.position = new Vector3(position.x * maxRoomSize * tailleCarreau + position.x*3*tailleCarreau, position.y * maxRoomSize * tailleCarreau +(position.y*3*tailleCarreau),0);
+        if (type == RoomType.boss)
+        {
+            int positionY;
+            int positionX;
+            if (openingB == true || openingT == true)
+            {
+                if (System.Math.Sign(position.y) == -1)
+                {
+                    positionY = position.y * maxRoomSize * tailleCarreau + (position.y * 3 * tailleCarreau) - temporatyMaxRoomSize / 2;
+                    print("HERE1");
+                }
+                else
+                {
+                    positionY = position.y * maxRoomSize * tailleCarreau + (position.y * 3 * tailleCarreau);
+                    print("HERE");
+                }
+
+                positionX = position.x * maxRoomSize * tailleCarreau + position.x * 3 * tailleCarreau - temporatyMaxRoomSize / 4;
+
+            }
+            else
+            {
+                if(System.Math.Sign(position.x) == 1)
+                {
+                    positionX = position.x * maxRoomSize * tailleCarreau + position.x * 3 * tailleCarreau;
+                }
+                else
+                {
+                    positionX = position.x * maxRoomSize * tailleCarreau + position.x * 3 * tailleCarreau - temporatyMaxRoomSize / 2;
+                }
+                
+                positionY = position.y * maxRoomSize * tailleCarreau + (position.y * 3 * tailleCarreau - temporatyMaxRoomSize / 4);
+
+
+            }
+            transform.position = new Vector3(positionX, positionY, 0);
+
+        }
+        else
+        {
+            transform.position = new Vector3(position.x * maxRoomSize * tailleCarreau + position.x * 3 * tailleCarreau, position.y * maxRoomSize * tailleCarreau + (position.y * 3 * tailleCarreau), 0);
+        }
+            
     }
 
     public virtual void setRoom(Vector2Int position, int width, int maxRoomSize)
@@ -82,6 +128,12 @@ public class Room: MonoBehaviour
     public void addWalls()
     {
         GameObject wall;
+
+        if(roomType == RoomType.boss)
+        {
+            width *= 2;
+            maxRoomSize *= 2;
+        }
 
         for (int i = 0; i < width; i++)
         {
@@ -133,6 +185,11 @@ public class Room: MonoBehaviour
 
                 }
             }
-        } 
+        }
+        if (roomType == RoomType.boss)
+        {
+            width /= 2;
+            maxRoomSize /= 2;
+        }
     }
 }
