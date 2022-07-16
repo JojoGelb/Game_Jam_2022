@@ -13,11 +13,10 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, 2f);  
     }
 
-    protected virtual void OnTriggerEnter(Collider collision)
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         print("Collision avec " + collision.gameObject.name);
         Destroy(gameObject);
-
     }
 
     public void setDamage(int dmg)

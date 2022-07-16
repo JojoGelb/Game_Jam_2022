@@ -12,5 +12,11 @@ public class Entity : MonoBehaviour
     {
         print(amount);
         LifePoint -= amount;
+
+        if(LifePoint <= 0)
+        {
+            Destroy(gameObject);
+        }
+
     }
 }

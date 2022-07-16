@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class EnnemiesBullet : Bullet
 {
-    
-    protected override void OnTriggerEnter(Collider collision)
+    protected override void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name != "Player")
+        if (collision.gameObject.name == "Player")
         {
             return;
         }
 
-        base.OnTriggerEnter(collision);
+        base.OnCollisionEnter2D(collision);
 
         if (!stop)
         {
@@ -26,8 +25,5 @@ public class EnnemiesBullet : Bullet
             ent.dealDamage(bulletDamage);
             stop = true;
         }
-        
-
-
     }
 }

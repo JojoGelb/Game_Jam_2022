@@ -54,7 +54,7 @@ public class GunBehavior : MonoBehaviour
             direction = transform.position - shootingPoint.transform.position;
             bullet.GetComponent<Bullet>().setDamage(damage);
             //bullet.transform.up =
-            bullet.GetComponent<Rigidbody>().AddForce(-direction.normalized * bulletSpeed, ForceMode.Impulse);
+            bullet.GetComponent<Rigidbody2D>().AddForce(-direction.normalized * bulletSpeed, ForceMode2D.Impulse);
         }
 
         return shootingDirection;
