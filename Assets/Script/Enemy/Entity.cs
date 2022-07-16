@@ -9,7 +9,7 @@ public class Entity : MonoBehaviour
     public int MaxLifePoint = 10;
     public GameObject prefabDamagePopUp;
 
-    public void dealDamage(int amount)
+    public virtual void dealDamage(int amount)
     {
         //print(amount);
         LifePoint -= amount;
@@ -23,7 +23,7 @@ public class Entity : MonoBehaviour
         UIPopUp(amount);
 
     }
-    void UIPopUp(int amount)
+    public void UIPopUp(int amount)
     {
         GameObject dmgPopUp = Instantiate(prefabDamagePopUp, transform.position + new Vector3(1.2f, 2), Quaternion.identity);
         DamagePopUp damagePopUp = dmgPopUp.GetComponent<DamagePopUp>();

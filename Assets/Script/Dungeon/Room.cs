@@ -24,6 +24,7 @@ public class Room: MonoBehaviour
     public RoomState roomState = RoomState.ready;
     private List<DoorTrigger> doorsTrigger = new List<DoorTrigger>();
     public List<GameObject> monsters;
+    public int bossAlive = 0;
 
     public int maxNbMonsters;
 
@@ -246,6 +247,15 @@ public class Room: MonoBehaviour
         }
     }
 
+    public virtual void spawnBoss()
+    {
+        GameObject boss = Instantiate(GameManager.instance.bossPrefab[0], new Vector3(0,0,-0.1f), Quaternion.identity);
+
+        boss.transform.parent = transform;
+        boss.transform.localPosition = new Vector3(maxRoomSize, maxRoomSize, -0.1f);
+        bossAlive = 1;
+    }
+
     public void enteringRoom()
     {
         if(roomState == RoomState.ready)
@@ -258,6 +268,8 @@ public class Room: MonoBehaviour
             }
             if (roomType == RoomType.normal) {
                 spawnMonsters();
+            } else if (roomType == RoomType.boss) {
+                spawnBoss();
             }
         }
     }

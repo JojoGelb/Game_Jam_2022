@@ -6,7 +6,7 @@ public class EnnemiesBullet : Bullet
 {
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.name != "Player")
         {
             return;
         }

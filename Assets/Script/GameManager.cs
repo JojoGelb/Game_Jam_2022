@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public GameObject player;
     public List<GameObject> monstersPrefab;
+    public List<GameObject> bossPrefab;
     public Room currentRoom;
 
     private void Awake()
@@ -24,10 +25,16 @@ public class GameManager : MonoBehaviour
     {
         print("i removed a monster");
         currentRoom.monsters.Remove(monster.gameObject);
-        if(currentRoom.monsters.Count == 0)
+        if(currentRoom.monsters.Count == 0 && currentRoom.roomType == Room.RoomType.normal)
         {
             currentRoom.roomCleared();
         }
+    }
+
+    public void removeBoss(Entity boss)
+    {
+        currentRoom.bossAlive = 0;
+        currentRoom.roomCleared();
     }
 }
 
