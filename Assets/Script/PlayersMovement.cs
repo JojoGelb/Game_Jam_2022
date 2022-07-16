@@ -11,13 +11,13 @@ public class PlayersMovement : MonoBehaviour
     public float dashLength = 10f;
     private Vector2 dash;
     private Vector2 savedVelocity = new Vector2(0,0);
-    private InputAction moveAction;
+    public InputAction moveAction;
     private InputAction dashAction;
-    private InputAction shootAction;
+    public InputAction shootAction;
     private InputAction ReloadAction;
     private PlayerInput playerInput;
     private Direction facingDirection = Direction.South;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     private GunBehavior gunBehavior;
     
@@ -77,16 +77,16 @@ public class PlayersMovement : MonoBehaviour
         switch (facingDirection)
         {
             case Direction.North:
-                transform.GetChild(0).transform.localRotation = Quaternion.Euler(0,0,0);
+                transform.GetChild(2).transform.localRotation = Quaternion.Euler(0,0,0);
                 break;
             case Direction.South:
-                transform.GetChild(0).transform.localRotation = Quaternion.Euler(0, 0, 180);
+                transform.GetChild(2).transform.localRotation = Quaternion.Euler(0, 0, 180);
                 break;
             case Direction.East:
-                transform.GetChild(0).transform.localRotation = Quaternion.Euler(0, 0, -90);
+                transform.GetChild(2).transform.localRotation = Quaternion.Euler(0, 0, -90);
                 break;
             case Direction.West:
-                transform.GetChild(0).transform.localRotation = Quaternion.Euler(0, 0, 90);
+                transform.GetChild(2).transform.localRotation = Quaternion.Euler(0, 0, 90);
                 break;
         }
     }
