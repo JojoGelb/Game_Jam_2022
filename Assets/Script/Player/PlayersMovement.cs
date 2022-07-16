@@ -15,6 +15,7 @@ public class PlayersMovement : MonoBehaviour
     private InputAction dashAction;
     public InputAction shootAction;
     private InputAction ReloadAction;
+    private InputAction PauseAction;
     private PlayerInput playerInput;
     private Direction facingDirection = Direction.South;
     public Rigidbody2D rb;
@@ -31,10 +32,18 @@ public class PlayersMovement : MonoBehaviour
         dashAction = playerInput.actions["Dash"];
         shootAction = playerInput.actions["Shoot"];
         ReloadAction = playerInput.actions["Reload"];
+        PauseAction = playerInput.actions["Pause"];
     }
 
     // Update is called once per frame
-    void Update() { 
+    void Update() {
+
+        //pause
+        Pause();
+        if (GameManager.instance.pause)
+        {
+            return;
+        }
         //deplacement 
         Vector2 cumulatedMove = new Vector2(0, 0);
 
@@ -72,6 +81,25 @@ public class PlayersMovement : MonoBehaviour
         changeLookingDirection();
     }
 
+    void Pause()
+    {
+
+        if (PauseAction.triggered)
+        {
+            if (gunBehavior.Canva.transform.GetChild(0).gameObject.activeInHierarchy)
+            {
+                gunBehavior.Canva.transform.GetChild(0).gameObject.SetActive(false);
+                GameManager.instance.pause = false;
+            }
+            else
+            {
+                gunBehavior.Canva.transform.GetChild(0).gameObject.SetActive(true);
+                GameManager.instance.pause = true;
+            }
+        }
+
+        
+    }
     void changeLookingDirection()
     {
         switch (facingDirection)

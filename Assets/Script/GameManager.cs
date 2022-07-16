@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> monstersPrefab;
     public List<GameObject> bossPrefab;
     public Room currentRoom;
+    public bool pause = false;
 
     private void Awake()
     {
