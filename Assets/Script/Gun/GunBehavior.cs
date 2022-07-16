@@ -184,16 +184,16 @@ public class GunBehavior : MonoBehaviour
         switch (facingDirection)
         {
             case Direction.North:
-                transform.GetChild(0).transform.localRotation = Quaternion.Euler(0, 0, 0);
+                transform.GetChild(2).transform.localRotation = Quaternion.Euler(0, 0, 0);
                 break;
             case Direction.South:
-                transform.GetChild(0).transform.localRotation = Quaternion.Euler(0, 0, 180);
+                transform.GetChild(2).transform.localRotation = Quaternion.Euler(0, 0, 180);
                 break;
             case Direction.East:
-                transform.GetChild(0).transform.localRotation = Quaternion.Euler(0, 0, -90);
+                transform.GetChild(2).transform.localRotation = Quaternion.Euler(0, 0, -90);
                 break;
             case Direction.West:
-                transform.GetChild(0).transform.localRotation = Quaternion.Euler(0, 0, 90);
+                transform.GetChild(2).transform.localRotation = Quaternion.Euler(0, 0, 90);
                 break;
         }
     }
