@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LifePoint: 10
   MaxLifePoint: 10
+  prefabDamagePopUp: {fileID: 5280630315289201114, guid: 4102443ceab150442a8613273f672a57, type: 3}
 --- !u!114 &1220441120149022177
 MonoBehaviour:
   m_ObjectHideFlags: 0

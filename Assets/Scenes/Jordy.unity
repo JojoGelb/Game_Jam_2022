@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1220441120149022177, guid: 729f7d0235eb5c6449bcad23e52c28ad, type: 3}
+      propertyPath: prefabMessagePopUp
+      value: 
+      objectReference: {fileID: 8978787628592594892, guid: a45fdcee58ccaf94b99138e998340c76, type: 3}
     - target: {fileID: 2382133929527881944, guid: 729f7d0235eb5c6449bcad23e52c28ad, type: 3}
       propertyPath: m_Name
       value: Player

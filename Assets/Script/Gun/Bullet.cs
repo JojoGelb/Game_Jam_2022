@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        print("Collision avec " + collision.gameObject.name);
+        //print("Collision avec " + collision.gameObject.name);
         Destroy(gameObject);
     }
 

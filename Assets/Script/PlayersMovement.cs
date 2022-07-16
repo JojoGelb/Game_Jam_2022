@@ -14,6 +14,7 @@ public class PlayersMovement : MonoBehaviour
     private InputAction moveAction;
     private InputAction dashAction;
     private InputAction shootAction;
+    private InputAction ReloadAction;
     private PlayerInput playerInput;
     private Direction facingDirection = Direction.South;
     private Rigidbody2D rb;
@@ -29,6 +30,7 @@ public class PlayersMovement : MonoBehaviour
         moveAction = playerInput.actions["Move"] ;
         dashAction = playerInput.actions["Dash"];
         shootAction = playerInput.actions["Shoot"];
+        ReloadAction = playerInput.actions["Reload"];
     }
 
     // Update is called once per frame
@@ -38,6 +40,15 @@ public class PlayersMovement : MonoBehaviour
 
         cumulatedMove += moveAction.ReadValue<Vector2>()*speed*Time.deltaTime;
         WichDirectionToLookWhenMooving(cumulatedMove);
+
+        //reload
+
+        if (ReloadAction.triggered)
+        {
+            gunBehavior.reloading();
+            print("reloading");
+        }
+
         //shoot
         Direction shootDiR = gunBehavior.shoot(shootAction.ReadValue<Vector2>());
         if(shootDiR != Direction.None)
