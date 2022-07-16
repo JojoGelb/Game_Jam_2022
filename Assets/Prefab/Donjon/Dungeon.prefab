@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BasicRoom: {fileID: 2033034427662444045, guid: e774aaa777b86594d8e7751ba82bf230, type: 3}
-  numberOfRooms: 50
-  minRoomSize: 6
-  maxRoomSize: 10
+  numberOfRooms: 10
+  minRoomSize: 15
+  maxRoomSize: 20
   tailleCarreau: 1
   rooms: []
