@@ -8,7 +8,7 @@ public class EnemyMovement : MonoBehaviour
     private Transform targetTransform;
     private Vector2 currentPos;
     public float speed = 3f;
-    public float distance = 1f;
+    public float Viewdistance = 5f;
     private CharacterController ct;
 
     void Start () {
@@ -21,6 +21,8 @@ public class EnemyMovement : MonoBehaviour
         Vector2 move = new Vector2(0, 0);
         move = (targetTransform.position - transform.position).normalized*speed*Time.deltaTime;
 
-        ct.Move(move);
+        if (Vector2.Distance(targetTransform.position, transform.position) < Viewdistance) {
+            ct.Move(move);
+        }
     }
 }
