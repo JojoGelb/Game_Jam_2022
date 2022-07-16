@@ -52,5 +52,10 @@ MonoBehaviour:
   width: 10
   roomType: 0
   roomState: 0
+  monsters: []
+  monsterPrefab:
+  - {fileID: 5282475165241075907, guid: f90c39c9794fdc34abcdeddf1a3fe7cd, type: 3}
+  maxNbMonsters: 5
   floorPrefab: {fileID: 8875079711244416056, guid: 733b95440ab1b844f86a6fb3a016d0bf, type: 3}
   wallPrefab: {fileID: 406355004237722533, guid: 0bc36bcb88e09e248b5227c129ced12e, type: 3}
+  doorPrefab: {fileID: 8925997103785025869, guid: 8486476a022edf244aad5848a77984c4, type: 3}

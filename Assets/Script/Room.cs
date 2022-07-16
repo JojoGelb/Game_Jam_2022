@@ -22,10 +22,15 @@ public class Room: MonoBehaviour
 
     public RoomType roomType = RoomType.normal;
     public RoomState roomState = RoomState.ready;
+    private List<DoorTrigger> doorsTrigger = new List<DoorTrigger>();
+    public List<GameObject> monsters;
+
+    public int maxNbMonsters;
 
     [Header("Rooms prefabs")]
     public GameObject floorPrefab;
     public GameObject wallPrefab;
+    public GameObject doorPrefab;
 
     public virtual void setRoom(Vector2Int position, int width, int maxRoomSize, RoomType type)
     {
@@ -138,6 +143,133 @@ public class Room: MonoBehaviour
         openingT = top;
     }
 
+    public void setDoorsTrigger()
+    {
+        GameObject door;
+        if (roomType == RoomType.boss) {
+            if (openingB)
+            {
+                door = Instantiate(doorPrefab, new Vector3(0,0,0), Quaternion.identity);
+                door.transform.parent = transform;
+                door.transform.localPosition = new Vector3(maxRoomSize - 0.5f, -1 + (maxRoomSize-width), 0);
+                door.name = "doorTrigger Bottom " + position;
+                doorsTrigger.Add(door.GetComponent<DoorTrigger>());
+                door.GetComponent<DoorTrigger>().setRoom(this);
+            }
+
+            if (openingT)
+            {
+                door = Instantiate(doorPrefab, new Vector3(0, 0, 0), Quaternion.Euler(0,180,0));
+                door.transform.parent = transform;
+                door.transform.localPosition = new Vector3((maxRoomSize - 0.5f),(maxRoomSize - width) + 2*width, 0);
+                door.name = "doorTrigger Top " + position;
+                print(door.name);
+                doorsTrigger.Add(door.GetComponent<DoorTrigger>());
+                door.GetComponent<DoorTrigger>().setRoom(this);
+            }
+
+            if (openingL)
+            {
+                door = Instantiate(doorPrefab, new Vector3(0, 0, 0), Quaternion.Euler(0,0,-90));
+                door.transform.parent = transform;
+                door.transform.localPosition = new Vector3((maxRoomSize - width) -1, (maxRoomSize) -0.5f, 0);
+                door.name = "doorTrigger Left " + position;
+                doorsTrigger.Add(door.GetComponent<DoorTrigger>());
+                door.GetComponent<DoorTrigger>().setRoom(this);
+            }
+
+            if (openingR)
+            {
+                door = Instantiate(doorPrefab, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 90));
+                door.transform.parent = transform;
+                door.transform.localPosition = new Vector3((maxRoomSize + width ), (maxRoomSize ) -0.5f, 0);
+                door.name = "doorTrigger Right " + position;
+                doorsTrigger.Add(door.GetComponent<DoorTrigger>());
+                door.GetComponent<DoorTrigger>().setRoom(this);
+            }
+        }
+        else {
+            if (openingB)
+            {
+                door = Instantiate(doorPrefab, new Vector3(0,0,0), Quaternion.identity);
+                door.transform.parent = transform;
+                door.transform.localPosition = new Vector3((maxRoomSize/2 - 0.5f), -1 + (maxRoomSize-width)/2, 0);
+                door.name = "doorTrigger Bottom " + position;
+                doorsTrigger.Add(door.GetComponent<DoorTrigger>());
+                door.GetComponent<DoorTrigger>().setRoom(this);
+            }
+
+            if (openingT)
+            {
+                door = Instantiate(doorPrefab, new Vector3(0, 0, 0), Quaternion.Euler(0,180,0));
+                door.transform.parent = transform;
+                door.transform.localPosition = new Vector3((maxRoomSize - 1) /2 +0.5f,(maxRoomSize - width)/2 + width, 0);
+                door.name = "doorTrigger Top " + position;
+                print(door.name);
+                doorsTrigger.Add(door.GetComponent<DoorTrigger>());
+                door.GetComponent<DoorTrigger>().setRoom(this);
+            }
+
+            if (openingL)
+            {
+                door = Instantiate(doorPrefab, new Vector3(0, 0, 0), Quaternion.Euler(0,0,-90));
+                door.transform.parent = transform;
+                door.transform.localPosition = new Vector3((maxRoomSize - width) /2 -1, (maxRoomSize) /2 -0.5f, 0);
+                door.name = "doorTrigger Left " + position;
+                doorsTrigger.Add(door.GetComponent<DoorTrigger>());
+                door.GetComponent<DoorTrigger>().setRoom(this);
+            }
+
+            if (openingR)
+            {
+                door = Instantiate(doorPrefab, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 90));
+                door.transform.parent = transform;
+                door.transform.localPosition = new Vector3((maxRoomSize + width )/2, (maxRoomSize ) /2 -0.5f, 0);
+                door.name = "doorTrigger Right " + position;
+                doorsTrigger.Add(door.GetComponent<DoorTrigger>());
+                door.GetComponent<DoorTrigger>().setRoom(this);
+            }
+        }
+    }
+
+    public virtual void spawnMonsters()
+    {
+        int n = Random.Range(1,maxNbMonsters);
+        for (int i = 0; i < n; i++)
+        {
+            int mons = Random.Range(0, GameManager.instance.monstersPrefab.Count);
+            GameObject monster = Instantiate(GameManager.instance.monstersPrefab[mons], new Vector3(0,0,0), Quaternion.identity);
+            
+            monster.transform.parent = transform;
+            monster.transform.localPosition = new Vector3((maxRoomSize / 2) + i * 2, maxRoomSize / 2, 0);
+            monsters.Add(monster);
+        }
+    }
+
+    public void enteringRoom()
+    {
+        if(roomState == RoomState.ready)
+        {
+            roomState = RoomState.onGoing;
+            GameManager.instance.currentRoom = this;
+            for (int i = 0; i < doorsTrigger.Count; i++)
+            {
+                doorsTrigger[i].closeDoor();
+            }
+            if (roomType == RoomType.normal) {
+                spawnMonsters();
+            }
+        }
+    }
+
+    public void roomCleared() {
+        roomState = RoomState.finished;
+        for (int i = 0; i < doorsTrigger.Count; i++)
+        {
+            doorsTrigger[i].openDoor();
+        }
+    }
+
     public void addWalls()
     {
         GameObject wall;
@@ -204,3 +336,5 @@ public class Room: MonoBehaviour
         }
     }
 }
+
+

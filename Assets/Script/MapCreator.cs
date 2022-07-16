@@ -676,6 +676,7 @@ public class MapCreator : MonoBehaviour
 
                 break;
         }
+        room.roomState = Room.RoomState.finished;
         rooms.Add(room);
     }
 
@@ -845,6 +846,7 @@ public class MapCreator : MonoBehaviour
         for (int i = 0; i < rooms.Count; i++)
         {
             rooms[i].addWalls();
+            rooms[i].setDoorsTrigger();
         }
     }
 }

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf64f45114c64243bfc4fd49fb9aa7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 2382133929527881944, guid: 729f7d0235eb5c6449bcad23e52c28ad, type: 3}
   speed: 10
   Viewdistance: 15
 --- !u!50 &715653771
