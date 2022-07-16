@@ -16,15 +16,15 @@ public class PlayersMovement : MonoBehaviour
     private InputAction shootAction;
     private PlayerInput playerInput;
     private Direction facingDirection = Direction.South;
-    private CharacterController ct;
+    private Rigidbody2D rb;
 
     private GunBehavior gunBehavior;
     
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         gunBehavior = GetComponent<GunBehavior>();
-        ct = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"] ;
         dashAction = playerInput.actions["Dash"];
@@ -56,7 +56,7 @@ public class PlayersMovement : MonoBehaviour
         Dash();
         WichDirectionToLook(cumulatedMove);
         
-        ct.Move(cumulatedMove);
+        rb.MovePosition(rb.position + cumulatedMove);
 
         changeLookingDirection();
     }
