@@ -238,10 +238,10 @@ public class Room: MonoBehaviour
         for (int i = 0; i < n; i++)
         {
             int mons = Random.Range(0, GameManager.instance.monstersPrefab.Count);
-            GameObject monster = Instantiate(GameManager.instance.monstersPrefab[mons], new Vector3(0,0,0), Quaternion.identity);
+            GameObject monster = Instantiate(GameManager.instance.monstersPrefab[mons], new Vector3(0,0,-0.1f), Quaternion.identity);
             
             monster.transform.parent = transform;
-            monster.transform.localPosition = new Vector3((maxRoomSize / 2) + i * 2, maxRoomSize / 2, 0);
+            monster.transform.localPosition = new Vector3((maxRoomSize / 2) + i * 2, maxRoomSize / 2, -0.1f);
             monsters.Add(monster);
         }
     }
