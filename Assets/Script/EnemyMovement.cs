@@ -11,6 +11,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Start () {
         rb = GetComponent<Rigidbody2D>();
+        target = GameManager.instance.player;
     }
  
     void Update(){

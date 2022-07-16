@@ -15,6 +15,7 @@ public class Entity : MonoBehaviour
 
         if(LifePoint <= 0)
         {
+            GameManager.instance.removeMonster(this);
             Destroy(gameObject);
         }
 
