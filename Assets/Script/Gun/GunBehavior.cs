@@ -17,6 +17,18 @@ public class GunBehavior : MonoBehaviour
     public float cooldownTime = 0.5f;
     private float timerColdownShoot = 3f;
 
+    public GameObject UIRedBullet;
+    public GameObject UIYellowBullet;
+    public GameObject UIGreenBullet;
+    public GameObject UIBlackBullet;
+    public GameObject Canva;
+
+    private GameObject blackUIBullet;
+
+    private bool perfectReloading = false;
+
+    private List<GameObject> uiBulletList = new List<GameObject>();
+
     public GameObject prefabMessagePopUp;
 
     // Start is called before the first frame update
@@ -24,6 +36,50 @@ public class GunBehavior : MonoBehaviour
     {
         numberOfBullet = Random.Range(1, bulletMax + 1);
     }
+
+    void addUiBullet()
+    {
+        if(numberOfBullet < bulletMax / 3)
+        {
+            GameObject redUiBullet = Instantiate(UIRedBullet, Canva.transform);
+            redUiBullet.transform.localPosition = new Vector3(Canva.GetComponent<RectTransform>().rect.width/2 - 50 - uiBulletList.Count * 30, -Canva.GetComponent<RectTransform>().rect.height / 2 + 50);
+            uiBulletList.Add(redUiBullet);
+        }else if (numberOfBullet < 2*bulletMax / 3)
+        {
+            GameObject yellowUiBullet = Instantiate(UIYellowBullet, Canva.transform);
+            yellowUiBullet.transform.localPosition = new Vector3(Canva.GetComponent<RectTransform>().rect.width / 2 - 50 - uiBulletList.Count * 30, -Canva.GetComponent<RectTransform>().rect.height / 2 + 50);
+            uiBulletList.Add(yellowUiBullet);
+        }
+        else
+        {
+            GameObject greenUiBullet = Instantiate(UIGreenBullet, Canva.transform);
+            greenUiBullet.transform.localPosition = new Vector3(Canva.GetComponent<RectTransform>().rect.width / 2 - 50 - uiBulletList.Count * 30, -Canva.GetComponent<RectTransform>().rect.height / 2 + 50);
+            uiBulletList.Add(greenUiBullet);
+        }
+    }
+
+    void addUiBlackBullet()
+    {
+        GameObject blackUi= Instantiate(UIBlackBullet, Canva.transform);
+        blackUi.transform.localPosition = new Vector3(-Canva.GetComponent<RectTransform>().rect.width / 2 + 50 - uiBulletList.Count * 30, -Canva.GetComponent<RectTransform>().rect.height / 2 + 50);
+        blackUIBullet = blackUi;
+    }
+
+    void clearUiBlackBullet()
+    {
+        Destroy(blackUIBullet);
+        blackUIBullet = null;
+    }
+
+    void clearUiBullet()
+    {
+        for (int i = uiBulletList.Count-1; i >=0; i--)
+        {
+            Destroy(uiBulletList[i]);
+            uiBulletList.Remove(uiBulletList[i]);
+        }
+    }
+
 
 
     public Direction shoot(Vector2 axis)
@@ -69,8 +125,16 @@ public class GunBehavior : MonoBehaviour
             //bullet.transform.up =
             bullet.GetComponent<Rigidbody2D>().AddForce(-direction.normalized * bulletSpeed, ForceMode2D.Impulse);
 
+            if(perfectReloading == true)
+            {
+                perfectReloading = false;
+                damageModifier = 0;
+                clearUiBlackBullet();
+            }
             if (damageModifier == 0) damageModifier++;
             else damageModifier *= 2;
+
+            addUiBullet();
         }
 
         return shootingDirection;
@@ -78,6 +142,7 @@ public class GunBehavior : MonoBehaviour
 
     void crashReloading()
     {
+        clearUiBullet();
         UIPopUp("Crash reloading");
         timerColdownShoot = -3f;
         numberOfBullet = Random.Range(1, bulletMax + 1);
@@ -86,12 +151,20 @@ public class GunBehavior : MonoBehaviour
 
     public void reloading()
     {
-        UIPopUp("Reloading");
+        clearUiBullet();
+        
         timerColdownShoot = -1.5f;
 
         if (numberOfBullet != 0)
         {
+            UIPopUp("Reloading");
             damageModifier = 0;
+        }
+        else
+        {
+            UIPopUp("Perfect Reloading");
+            perfectReloading = true;
+            addUiBlackBullet();
         }
 
         numberOfBullet = Random.Range(1, bulletMax + 1);
