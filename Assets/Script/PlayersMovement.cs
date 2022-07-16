@@ -13,17 +13,22 @@ public class PlayersMovement : MonoBehaviour
     private Vector2 savedVelocity = new Vector2(0,0);
     private InputAction moveAction;
     private InputAction dashAction;
+    private InputAction shootAction;
     private PlayerInput playerInput;
     private Direction facingDirection = Direction.South;
     private CharacterController ct;
+
+    private GunBehavior gunBehavior;
     
     // Start is called before the first frame update
     void Start()
     {
+        gunBehavior = GetComponent<GunBehavior>();
         ct = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"] ;
         dashAction = playerInput.actions["Dash"];
+        shootAction = playerInput.actions["Shoot"];
     }
 
     // Update is called once per frame
@@ -31,10 +36,14 @@ public class PlayersMovement : MonoBehaviour
         //deplacement 
         Vector2 cumulatedMove = new Vector2(0, 0);
 
-        cumulatedMove += moveAction.ReadValue<Vector2>()*speed*Time.deltaTime; 
-
+        cumulatedMove += moveAction.ReadValue<Vector2>()*speed*Time.deltaTime;
+        WichDirectionToLookWhenMooving(cumulatedMove);
         //shoot
-
+        Direction shootDiR = gunBehavior.shoot(shootAction.ReadValue<Vector2>());
+        if(shootDiR != Direction.None)
+        {
+            facingDirection = shootDiR;
+        }
         //direction sprite
 
         //dash
@@ -47,6 +56,47 @@ public class PlayersMovement : MonoBehaviour
         Dash();
         
         ct.Move(cumulatedMove);
+
+        changeLookingDirection();
+    }
+
+    void changeLookingDirection()
+    {
+        switch (facingDirection)
+        {
+            case Direction.North:
+                transform.GetChild(0).transform.localRotation = Quaternion.Euler(0,0,0);
+                break;
+            case Direction.South:
+                transform.GetChild(0).transform.localRotation = Quaternion.Euler(0, 0, 180);
+                break;
+            case Direction.East:
+                transform.GetChild(0).transform.localRotation = Quaternion.Euler(0, 0, -90);
+                break;
+            case Direction.West:
+                transform.GetChild(0).transform.localRotation = Quaternion.Euler(0, 0, 90);
+                break;
+        }
+    }
+
+    void WichDirectionToLookWhenMooving(Vector2 directionToMoove)
+    {
+        if (directionToMoove.y < 0)
+        {
+            facingDirection = Direction.South;
+        }
+        else if (directionToMoove.x > 0)
+        {
+            facingDirection = Direction.East;
+        }
+        else if (directionToMoove.x < 0)
+        {
+            facingDirection = Direction.West;
+        }
+        else
+        {
+            facingDirection = Direction.North;
+        }
     }
 
     void Dash()
@@ -63,9 +113,10 @@ public class PlayersMovement : MonoBehaviour
 }
 
 public enum Direction {
-    Noth,
+    North,
     East,
     South,
-    West
+    West,
+    None
 }
 

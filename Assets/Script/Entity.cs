@@ -5,17 +5,12 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    public int LifePoint = 1;
-    public Vector2 speed = new Vector2(1,1);
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int LifePoint = 10;
+    public int MaxLifePoint = 10;
 
-    // Update is called once per frame
-    void Update()
+    public void dealDamage(int amount)
     {
-        
+        print(amount);
+        LifePoint -= amount;
     }
 }
