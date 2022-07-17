@@ -224,4 +224,18 @@ public class GunBehavior : MonoBehaviour
         }
     }
 
+    public void setMaxBullet(int max) {
+        bulletMax = max;
+    }
+    public int getMaxBullet() {
+        return bulletMax;
+    }
+    public int getMinBullet() {
+        return bulletMin;
+    }
+    public void setMinBullet(int max) {
+        bulletMax = max;
+    }
+
+
 }
