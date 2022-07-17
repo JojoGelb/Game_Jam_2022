@@ -19,6 +19,7 @@ public class PlayerEntity : Entity
         if(timer > invicibilityTime)
         {
             LifePoint -= amount;
+            healthBar.gameObject.SetActive(true);
             timer = 0;
             UIPopUp(amount);
         }

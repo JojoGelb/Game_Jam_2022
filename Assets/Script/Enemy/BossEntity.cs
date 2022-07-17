@@ -14,6 +14,7 @@ public class BossEntity : Entity
         {
             healthBar.SetMaxHealth(MaxLifePoint);
             healthBar.SetHealth(LifePoint);
+            healthBar.gameObject.SetActive(false);
         }
     }
    
@@ -21,8 +22,9 @@ public class BossEntity : Entity
     {
         //print(amount);
         LifePoint -= amount;
+        healthBar.gameObject.SetActive(true);
 
-        if(LifePoint <= 0)
+        if (LifePoint <= 0)
         {
             GameManager.instance.removeBoss(this);
             Destroy(gameObject);

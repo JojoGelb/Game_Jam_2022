@@ -18,6 +18,7 @@ public class Entity : MonoBehaviour
         {
             healthBar.SetMaxHealth(MaxLifePoint);
             healthBar.SetHealth(LifePoint);
+            healthBar.gameObject.SetActive(false);
         }
         
     }
@@ -26,7 +27,7 @@ public class Entity : MonoBehaviour
     {
         //print(amount);
         LifePoint -= amount;
-        
+        healthBar.gameObject.SetActive(true);
 
         if (LifePoint <= 0)
         {
