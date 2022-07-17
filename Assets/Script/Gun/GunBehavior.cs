@@ -120,7 +120,7 @@ public class GunBehavior : MonoBehaviour
                     bullet = Instantiate(bulletPrefab, shootingPoint.position, Quaternion.Euler(0, 0, 90));
                     break;
             }
-            direction = transform.position - shootingPoint.transform.position;
+            direction = transform.position - shootingPoint.position;
             bullet.GetComponent<Bullet>().setDamage(damage + damageModifier);
             //bullet.transform.up =
             bullet.GetComponent<Rigidbody2D>().AddForce(-direction.normalized * bulletSpeed, ForceMode2D.Impulse);

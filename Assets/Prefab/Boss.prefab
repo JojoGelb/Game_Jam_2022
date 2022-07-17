@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 1230764864749762574}
   - component: {fileID: 1230764864749762573}
   - component: {fileID: 1230764864749762572}
+  - component: {fileID: -7685758583077650153}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -112,6 +113,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 1230764864279240604}
+  - {fileID: 860112509987380178}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -156,3 +158,51 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-7685758583077650153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230764864749762674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c658b0a2e98dad5449f627540f3de927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletHomingPrefab: {fileID: 6151183398832491367, guid: 9270e204e3b0b6142bb7efbf884c3b78, type: 3}
+  monsterPrefab: {fileID: 5282475165241075907, guid: f90c39c9794fdc34abcdeddf1a3fe7cd, type: 3}
+  bulletShotGunPrefab: {fileID: 7575566535086444501, guid: 461fce12968c51849b1b854eda121b6f, type: 3}
+  speed: 3
+  Viewdistance: 5
+  attackCooldown: 1
+--- !u!1 &7012133030536912383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 860112509987380178}
+  m_Layer: 0
+  m_Name: shootingPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &860112509987380178
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7012133030536912383}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.578, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1230764864749762574}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
