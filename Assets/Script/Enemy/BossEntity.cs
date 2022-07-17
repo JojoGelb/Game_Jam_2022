@@ -9,6 +9,12 @@ public class BossEntity : Entity
     {
         MaxLifePoint = 100;
         LifePoint = 100;
+
+        if (healthBar)
+        {
+            healthBar.SetMaxHealth(MaxLifePoint);
+            healthBar.SetHealth(LifePoint);
+        }
     }
    
    public override void dealDamage(int amount)
@@ -22,6 +28,11 @@ public class BossEntity : Entity
             Destroy(gameObject);
             PassInfoBTWScene.result = PassInfoBTWScene.Result.win;
             SceneManager.LoadScene("EndGame");
+        }
+
+        if (healthBar)
+        {
+            healthBar.SetHealth(LifePoint);
         }
 
         UIPopUp(amount);

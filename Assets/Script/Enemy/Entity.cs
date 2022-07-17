@@ -8,16 +8,33 @@ public class Entity : MonoBehaviour
     public int LifePoint = 10;
     public int MaxLifePoint = 10;
     public GameObject prefabDamagePopUp;
+    public HealthBarScript healthBar;
+
+    private void Start()
+    {
+        if (healthBar)
+        {
+            healthBar.SetMaxHealth(MaxLifePoint);
+            healthBar.SetHealth(LifePoint);
+        }
+        
+    }
 
     public virtual void dealDamage(int amount)
     {
         //print(amount);
         LifePoint -= amount;
+        
 
-        if(LifePoint <= 0)
+        if (LifePoint <= 0)
         {
             GameManager.instance.removeMonster(this);
             Destroy(gameObject);
+        }
+
+        if (healthBar)
+        {
+            healthBar.SetHealth(LifePoint);
         }
 
         UIPopUp(amount);
