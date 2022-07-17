@@ -6,7 +6,9 @@ public class AddTwoBulletPowerUp : PowerUp
 {
     public override void powerUpeffect()
     {
-        GameManager.instance.player.GetComponent<GunBehavior>().bulletMax += 2;
-        GameManager.instance.player.GetComponent<GunBehavior>().bulletMin += 2;
+        GunBehavior gb = GameManager.instance.player.GetComponent<GunBehavior>();
+        gb.bulletMax += 2;
+        gb.bulletMin += 2;
+        gb.changeMaxBulletUI(gb.bulletMax);
     }
 }
