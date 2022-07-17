@@ -135,7 +135,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -229,9 +229,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc062889c8ab88d41a1b1c780c1719d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 25
+  speed: 50
   dashCooldown: 1
-  dashLength: 90
+  dashLength: 150
   moveAction:
     m_Name: Move
     m_Type: 0
@@ -264,7 +264,7 @@ MonoBehaviour:
   bulletSpeed: 30
   bulletPrefab: {fileID: 5597850761795247192, guid: a1a370ad9a6a8724794f454591c00a52, type: 3}
   shootingPoint: {fileID: 1778555103296681045}
-  damage: 10
+  damage: 1
   cooldownTime: 0.5
   UIRedBullet: {fileID: 7973902985340774749, guid: 4ba4d9423f17f4f428250df15cef8aed, type: 3}
   UIYellowBullet: {fileID: 5444143849625728647, guid: 1ea7fbd797d18634e9b771e923c405f1, type: 3}

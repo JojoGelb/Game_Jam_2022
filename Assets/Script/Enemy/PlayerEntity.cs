@@ -10,7 +10,8 @@ public class PlayerEntity : Entity
 
         if (LifePoint <= 0)
         {
-            SceneManager.LoadScene("EndMenu");
+            PassInfoBTWScene.result = PassInfoBTWScene.Result.loose;
+            SceneManager.LoadScene("EndGame");
         }
 
         UIPopUp(amount);

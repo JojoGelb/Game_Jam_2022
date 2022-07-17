@@ -182,6 +182,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1544044661}
+    - target: {fileID: 6028932593478355327, guid: 115cb224d1c2f2d4a95e1ddaa64cee66, type: 3}
+      propertyPath: bossPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028932593478355327, guid: 115cb224d1c2f2d4a95e1ddaa64cee66, type: 3}
+      propertyPath: bossPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 1230764864749762674, guid: a7476b59820cfbe4bbd7169c1662367d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 115cb224d1c2f2d4a95e1ddaa64cee66, type: 3}
 --- !u!1001 &443438427
@@ -248,6 +256,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1771015346985013512, guid: 4b098e732b60968429a4384c2f4c3248, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771015346985013512, guid: 4b098e732b60968429a4384c2f4c3248, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771015346985013512, guid: 4b098e732b60968429a4384c2f4c3248, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1771015348070624050, guid: 4b098e732b60968429a4384c2f4c3248, type: 3}
       propertyPath: m_RootOrder
       value: 2
