@@ -265,6 +265,7 @@ public class Room: MonoBehaviour
             if (roomType == RoomType.normal) {
                 spawnMonsters();
             } else if (roomType == RoomType.boss) {
+                GameManager.instance.audioManager.playBossSong();
                 spawnBoss();
             }
         }

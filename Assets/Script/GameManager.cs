@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public AudioManager audioManager;
     public GameObject player;
     public List<GameObject> monstersPrefab;
     public List<GameObject> bossPrefab;
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
         if(instance == null)
         {
             instance = this;
+            audioManager = GetComponent<AudioManager>();
         }
         else
         {
