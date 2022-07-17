@@ -36,6 +36,25 @@ public class TutoScript : MonoBehaviour
                 }
                 break;
             case 1:
+                if (timer > maxTime - 2)
+                {
+                    triggered = false;
+                    textMesh.SetText("PRESS SPACE BAR AND WASD \n TO DASH IN A DIRECTION");
+                    etapeTuto++;
+                    timer = 0;
+                    return;
+                }
+
+                if (playersMovement.moveAction.triggered)
+                {
+                    triggered = true;
+                }
+                if (triggered == true)
+                {
+                    timer += Time.deltaTime;
+                }
+                break;
+            case 2:
                 if(timer>maxTime - 2)
                 {
                     triggered = false;
@@ -44,7 +63,7 @@ public class TutoScript : MonoBehaviour
                     timer = 0;
                     return;
                 }
-                if (playersMovement.moveAction.triggered)
+                if (playersMovement.dashAction.triggered)
                 {
                     triggered = true;
                 }
@@ -53,7 +72,7 @@ public class TutoScript : MonoBehaviour
                     timer += Time.deltaTime;
                 }
                 break;
-            case 2:
+            case 3:
                 if (timer > maxTime - 2)
                 {
                     triggered = false;
@@ -71,7 +90,7 @@ public class TutoScript : MonoBehaviour
                     timer += Time.deltaTime;
                 }
                 break;
-            case 3:
+            case 4:
                 if (playersMovement.ReloadAction.triggered)
                 {
                     triggered = false;
@@ -81,7 +100,7 @@ public class TutoScript : MonoBehaviour
                     return;
                 }
                 break;
-            case 4:
+            case 5:
                 timer += Time.deltaTime;
                 if (timer > maxTime)
                 {
@@ -93,7 +112,7 @@ public class TutoScript : MonoBehaviour
                 }
                 break;
 
-            case 5:
+            case 6:
                 timer += Time.deltaTime;
                 if (timer > maxTime)
                 {
@@ -105,7 +124,7 @@ public class TutoScript : MonoBehaviour
                 }
                 break;
 
-            case 6:
+            case 7:
                 timer += Time.deltaTime;
                 if (timer > maxTime)
                 {
@@ -116,7 +135,7 @@ public class TutoScript : MonoBehaviour
                     return;
                 }
                 break;
-            case 7:
+            case 8:
                 timer += Time.deltaTime;
                 if (timer > maxTime)
                 {
@@ -127,7 +146,7 @@ public class TutoScript : MonoBehaviour
                     return;
                 }
                 break;
-            case 8:
+            case 9:
                 timer += Time.deltaTime;
                 if (timer > maxTime)
                 {

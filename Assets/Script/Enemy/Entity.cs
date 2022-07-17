@@ -9,6 +9,8 @@ public class Entity : MonoBehaviour
     public int MaxLifePoint = 10;
     public GameObject prefabDamagePopUp;
     public HealthBarScript healthBar;
+    public AudioSource audioSrc;
+    public AudioClip DeathAudioClip;
 
     private void Start()
     {
@@ -29,6 +31,7 @@ public class Entity : MonoBehaviour
         if (LifePoint <= 0)
         {
             GameManager.instance.removeMonster(this);
+            AudioSource.PlayClipAtPoint(DeathAudioClip,GameManager.instance.player.transform.position);
             Destroy(gameObject);
         }
 

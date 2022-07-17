@@ -23,6 +23,7 @@ public class EnnemiesBullet : Bullet
             }
 
             ent.dealDamage(bulletDamage);
+            collision.gameObject.GetComponent<PlayersMovement>().knockBack(transform.position, 100f);
             stop = true;
         }
     }
