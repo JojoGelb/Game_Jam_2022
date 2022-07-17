@@ -5,7 +5,7 @@ using UnityEngine;
 public class HomingBullet : EnnemiesBullet
 {
     private GameObject target;
-    public float speed = 3f;
+    public float speed = 10f;
     private Rigidbody2D rb;
 
     void Start () {

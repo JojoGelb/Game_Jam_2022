@@ -10,10 +10,15 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 2f);  
+        destroyObject();  
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        //print("Collision avec " + collision.gameObject.name);
+        Destroy(gameObject);
+    }
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         //print("Collision avec " + collision.gameObject.name);
         Destroy(gameObject);
@@ -22,5 +27,9 @@ public class Bullet : MonoBehaviour
     public void setDamage(int dmg)
     {
         bulletDamage = dmg;
+    }
+
+    public virtual void destroyObject() {
+        Destroy(gameObject, 2f);
     }
 }

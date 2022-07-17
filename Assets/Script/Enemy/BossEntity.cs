@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossEntity : Entity
 {
@@ -19,6 +20,8 @@ public class BossEntity : Entity
         {
             GameManager.instance.removeBoss(this);
             Destroy(gameObject);
+            PassInfoBTWScene.result = PassInfoBTWScene.Result.win;
+            SceneManager.LoadScene("EndGame");
         }
 
         UIPopUp(amount);
