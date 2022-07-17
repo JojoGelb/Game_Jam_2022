@@ -45,14 +45,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d1fae1d479dc0419ab49ae7d598583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioManager: {fileID: 0}
   player: {fileID: 0}
   monstersPrefab:
   - {fileID: 5282475165241075907, guid: f90c39c9794fdc34abcdeddf1a3fe7cd, type: 3}
   bossPrefab:
   - {fileID: 1230764864749762674, guid: a7476b59820cfbe4bbd7169c1662367d, type: 3}
+  itemsPrefab:
+  - {fileID: 3095809450233097490, guid: be24f39aefd8e9f42b3ad333de750591, type: 3}
+  - {fileID: 7502185699695962382, guid: 5266e7d0b3062d6428977c35fb68f682, type: 3}
+  - {fileID: 13572330590418773, guid: e258879c48835164dbde356cb9142db2, type: 3}
   currentRoom: {fileID: 0}
   pause: 0
+  audioManager: {fileID: 0}
 --- !u!82 &434675336
 AudioSource:
   m_ObjectHideFlags: 0

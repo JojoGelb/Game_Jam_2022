@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public List<GameObject> monstersPrefab;
     public List<GameObject> bossPrefab;
+    public List<GameObject> itemsPrefab;
 
     [Header("Dont touch Zone")]
     public Room currentRoom;

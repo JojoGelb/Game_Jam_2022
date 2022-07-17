@@ -253,6 +253,14 @@ public class Room: MonoBehaviour
         bossAlive = 1;
     }
 
+     public virtual void spawnChest() {
+        int n = Random.Range(0,3);
+        GameObject powerUp = Instantiate(GameManager.instance.itemsPrefab[n], new Vector3(0,0,-0.1f), Quaternion.identity);
+            
+        powerUp.transform.parent = transform;
+        powerUp.transform.localPosition = new Vector3((maxRoomSize / 2) * 2, maxRoomSize / 2, -0.1f);
+     }
+
     public void enteringRoom()
     {
         if(roomState == RoomState.ready)
@@ -268,6 +276,8 @@ public class Room: MonoBehaviour
             } else if (roomType == RoomType.boss) {
                 GameManager.instance.audioManager.playBossSong();
                 spawnBoss();
+            } else if (roomType == RoomType.chest) {
+                spawnChest();
             }
         }
     }
