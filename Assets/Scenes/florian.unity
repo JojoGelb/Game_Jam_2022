@@ -155,7 +155,10 @@ MonoBehaviour:
   player: {fileID: 2382133929379174319}
   monstersPrefab:
   - {fileID: 5282475165241075907, guid: f90c39c9794fdc34abcdeddf1a3fe7cd, type: 3}
+  bossPrefab:
+  - {fileID: 1230764864749762674, guid: a7476b59820cfbe4bbd7169c1662367d, type: 3}
   currentRoom: {fileID: 0}
+  pause: 0
 --- !u!4 &412738489
 Transform:
   m_ObjectHideFlags: 0
@@ -170,7 +173,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1588552298
+--- !u!1001 &1433034791
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -179,7 +182,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7383651671958946041, guid: 4cda8414407f0d34297e7b69d9a395ca, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7383651671958946041, guid: 4cda8414407f0d34297e7b69d9a395ca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -223,7 +226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7383651671958946042, guid: 4cda8414407f0d34297e7b69d9a395ca, type: 3}
       propertyPath: numberOfRooms
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7383651671958946043, guid: 4cda8414407f0d34297e7b69d9a395ca, type: 3}
       propertyPath: m_Name
@@ -245,7 +248,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1771015348070624050, guid: 4b098e732b60968429a4384c2f4c3248, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1771015348070624050, guid: 4b098e732b60968429a4384c2f4c3248, type: 3}
       propertyPath: m_LocalPosition.x
@@ -290,6 +293,10 @@ PrefabInstance:
     - target: {fileID: 1771015348070624053, guid: 4b098e732b60968429a4384c2f4c3248, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2986734933385068044, guid: 4b098e732b60968429a4384c2f4c3248, type: 3}
+      propertyPath: damage
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4151442696642869996, guid: 4b098e732b60968429a4384c2f4c3248, type: 3}
       propertyPath: m_Size.x
