@@ -239,7 +239,7 @@ public class Room: MonoBehaviour
             GameObject monster = Instantiate(GameManager.instance.monstersPrefab[mons], new Vector3(0,0,-0.1f), Quaternion.identity);
             
             monster.transform.parent = transform;
-            monster.transform.localPosition = new Vector3((maxRoomSize / 2) + i * 2, maxRoomSize / 2, -0.1f);
+            monster.transform.localPosition = new Vector3((maxRoomSize / 2) + (i-1) * 2, maxRoomSize / 2 + (i-1) * 2, -0.1f);
             monsters.Add(monster);
         }
     }
@@ -271,6 +271,7 @@ public class Room: MonoBehaviour
             for (int i = 0; i < doorsTrigger.Count; i++)
             {
                 doorsTrigger[i].closeDoor();
+                doorsTrigger[i].transform.localScale += new Vector3(0,0.9f,0);
             }
             if (roomType == RoomType.normal) {
                 spawnMonsters();

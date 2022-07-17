@@ -48,6 +48,7 @@ MonoBehaviour:
   player: {fileID: 0}
   monstersPrefab:
   - {fileID: 5282475165241075907, guid: f90c39c9794fdc34abcdeddf1a3fe7cd, type: 3}
+  - {fileID: 5318909893583432391, guid: d9cafc6a63c53d340a8937135fe51a4a, type: 3}
   bossPrefab:
   - {fileID: 1230764864749762674, guid: a7476b59820cfbe4bbd7169c1662367d, type: 3}
   itemsPrefab:

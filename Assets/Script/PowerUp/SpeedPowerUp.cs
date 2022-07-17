@@ -6,6 +6,6 @@ public class SpeedPowerUp : PowerUp
 {
     public override void powerUpeffect()
     {
-        GameManager.instance.player.GetComponent<PlayersMovement>().speed += 1; 
+        GameManager.instance.player.GetComponent<PlayersMovement>().speed += 5; 
     }
 }

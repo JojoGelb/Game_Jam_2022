@@ -6,7 +6,7 @@ public class DoorTrigger : MonoBehaviour
 {
 
     BoxCollider2D doorCollider;
-    MeshRenderer doorRenderer;
+    SpriteRenderer doorRenderer;
 
     private Room room;
 
@@ -18,7 +18,7 @@ public class DoorTrigger : MonoBehaviour
     private void Start()
     {
         doorCollider = gameObject.GetComponent<BoxCollider2D>();
-        doorRenderer = gameObject.GetComponent<MeshRenderer>();
+        doorRenderer = gameObject.GetComponent<SpriteRenderer>();
         doorRenderer.enabled = false;
     }
 
