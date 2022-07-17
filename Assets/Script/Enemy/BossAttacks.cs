@@ -68,12 +68,12 @@ public class BossAttacks : MonoBehaviour
         for(int i=0; i<2; i++) {
             if (GameManager.instance.currentRoom.monsters.Count <nbMaxOfMob) {
 
-                if(timeBeforeNextMonsterPossible > 5)
+                if(timeBeforeNextMonsterPossible < 2)
                 {
-                    timeBeforeNextMonsterPossible = 0;
                     attack3();
                     return;
                 }
+                timeBeforeNextMonsterPossible = 0;
 
                 GameObject monster = null;
 
