@@ -191,7 +191,7 @@ MonoBehaviour:
   prefabDamagePopUp: {fileID: 5280630315289201114, guid: 4102443ceab150442a8613273f672a57, type: 3}
   healthBar: {fileID: 6561630714044561678}
   audioSrc: {fileID: 0}
-  DeathAudioClip: {fileID: 0}
+  DeathAudioClip: {fileID: 8300000, guid: 4db59d4c1f42cfa429808952bd69f1c1, type: 3}
 --- !u!114 &9205393424114393266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletShotGunPrefab: {fileID: 3475215802735366612, guid: 4045958b7a936bb4a873d80ccb9a41b3, type: 3}
   attackCooldown: 3
+  speed: 10
 --- !u!1 &7816677054142105604
 GameObject:
   m_ObjectHideFlags: 0

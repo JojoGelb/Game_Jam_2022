@@ -16,12 +16,16 @@ public class BossAttacks : MonoBehaviour
     private int attack;
     public int nbMaxOfMob = 6;
 
+    private float timeBeforeNextMonsterPossible = 5;
+
     void Start () {
         target = GameManager.instance.player;
         attackTime = attackCooldown;
     }
  
     void Update(){
+        timeBeforeNextMonsterPossible += Time.deltaTime;
+
         attackTime += Time.deltaTime;
         if (attackTime >= attackCooldown) {
             attackTime = 0f;
@@ -63,6 +67,14 @@ public class BossAttacks : MonoBehaviour
     private void attack2(){ //fais spawn 2 monstres
         for(int i=0; i<2; i++) {
             if (GameManager.instance.currentRoom.monsters.Count <nbMaxOfMob) {
+
+                if(timeBeforeNextMonsterPossible > 5)
+                {
+                    timeBeforeNextMonsterPossible = 0;
+                    attack3();
+                    return;
+                }
+
                 GameObject monster = null;
 
                 monster = Instantiate(monsterPrefab, new Vector3(0,0,0), Quaternion.Euler(0, 0, 0));
@@ -80,7 +92,7 @@ public class BossAttacks : MonoBehaviour
         Vector3 shootingDir = target.transform.position-transform.position;
         Vector3 spacing = new Vector3(0,0,0);
         int damage = 1;
-        int speed = 3;
+        int speed = 10;
 
         if(shootingDir.x>1 && shootingDir.y<0) {//bas droite
             spacing = new Vector3(0.2f,0.2f,0);

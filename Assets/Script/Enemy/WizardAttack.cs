@@ -9,9 +9,10 @@ public class WizardAttack : MonoBehaviour
     public float attackCooldown = 3f;
     private float attackTime;
     private int attack;
+    public int speed = 3;
     void Start () {
         target = GameManager.instance.player;
-        attackTime = attackCooldown;
+        attackTime = 0;
     }
     void Update(){
         attackTime += Time.deltaTime;
@@ -27,7 +28,7 @@ public class WizardAttack : MonoBehaviour
         Vector3 shootingDir = target.transform.position-transform.position;
         Vector3 spacing = new Vector3(0,0,0);
         int damage = 1;
-        int speed = 3;
+        
 
         if(shootingDir.x>1 && shootingDir.y<0) {//bas droite
             spacing = new Vector3(0.2f,0.2f,0);
