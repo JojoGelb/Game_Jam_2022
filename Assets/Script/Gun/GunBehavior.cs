@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GunBehavior : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class GunBehavior : MonoBehaviour
     public GameObject UIGreenBullet;
     public GameObject UIBlackBullet;
     public GameObject Canva;
+    public TextMeshProUGUI bulletUIMax;
 
     private GameObject blackUIBullet;
 
@@ -35,7 +37,13 @@ public class GunBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        numberOfBullet = Random.Range(bulletMin, bulletMax + 1);
+        changeMaxBulletUI(bulletMax);
+        numberOfBullet = bulletMax;
+    }
+
+    public void changeMaxBulletUI(int amount)
+    {
+        bulletUIMax.SetText("/" + amount.ToString());
     }
 
     void addUiBullet()
@@ -43,18 +51,18 @@ public class GunBehavior : MonoBehaviour
         if(numberOfBullet < bulletMax / 3)
         {
             GameObject redUiBullet = Instantiate(UIRedBullet, Canva.transform);
-            redUiBullet.transform.localPosition = new Vector3(Canva.GetComponent<RectTransform>().rect.width/2 - 50 - uiBulletList.Count * 30, -Canva.GetComponent<RectTransform>().rect.height / 2 + 50);
+            redUiBullet.transform.localPosition = new Vector3(Canva.GetComponent<RectTransform>().rect.width/2 - 80 - uiBulletList.Count * 30, -Canva.GetComponent<RectTransform>().rect.height / 2 + 30);
             uiBulletList.Add(redUiBullet);
         }else if (numberOfBullet < 2*bulletMax / 3)
         {
             GameObject yellowUiBullet = Instantiate(UIYellowBullet, Canva.transform);
-            yellowUiBullet.transform.localPosition = new Vector3(Canva.GetComponent<RectTransform>().rect.width / 2 - 50 - uiBulletList.Count * 30, -Canva.GetComponent<RectTransform>().rect.height / 2 + 50);
+            yellowUiBullet.transform.localPosition = new Vector3(Canva.GetComponent<RectTransform>().rect.width / 2 - 80 - uiBulletList.Count * 30, -Canva.GetComponent<RectTransform>().rect.height / 2 + 30);
             uiBulletList.Add(yellowUiBullet);
         }
         else
         {
             GameObject greenUiBullet = Instantiate(UIGreenBullet, Canva.transform);
-            greenUiBullet.transform.localPosition = new Vector3(Canva.GetComponent<RectTransform>().rect.width / 2 - 50 - uiBulletList.Count * 30, -Canva.GetComponent<RectTransform>().rect.height / 2 + 50);
+            greenUiBullet.transform.localPosition = new Vector3(Canva.GetComponent<RectTransform>().rect.width / 2 - 80 - uiBulletList.Count * 30, -Canva.GetComponent<RectTransform>().rect.height / 2 + 30);
             uiBulletList.Add(greenUiBullet);
         }
     }
