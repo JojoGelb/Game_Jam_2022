@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerEntity : Entity
 {
+
     public override void dealDamage(int amount)
     {
         //print(amount);
@@ -12,6 +13,11 @@ public class PlayerEntity : Entity
         {
             PassInfoBTWScene.result = PassInfoBTWScene.Result.loose;
             SceneManager.LoadScene("EndGame");
+        }
+
+        if (healthBar)
+        {
+            healthBar.SetHealth(LifePoint);
         }
 
         UIPopUp(amount);
