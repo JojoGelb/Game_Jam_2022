@@ -13,6 +13,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(levelToLoad);
     }
 
+    public void StartTutorial()
+    {
+        SceneManager.LoadScene("Tuto");
+    }
+
     public void Settings()
     {
         settingsWindow.SetActive(true);

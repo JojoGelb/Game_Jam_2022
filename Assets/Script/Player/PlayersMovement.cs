@@ -11,19 +11,29 @@ public class PlayersMovement : MonoBehaviour
     public float dashLength = 10f;
     private Vector2 dash;
     private Vector2 savedVelocity = new Vector2(0,0);
-    public InputAction moveAction;
-    private InputAction dashAction;
-    public InputAction shootAction;
-    private InputAction ReloadAction;
-    private InputAction PauseAction;
-    private PlayerInput playerInput;
+
+
+
     private Direction facingDirection = Direction.South;
     public Rigidbody2D rb;
 
     Vector2 knockVector;
 
+    [Header("Dont touch this")]
+    public InputAction moveAction;
+    public InputAction dashAction;
+    public InputAction shootAction;
+    public InputAction ReloadAction;
+    public InputAction PauseAction;
+    private PlayerInput playerInput;
+
     private GunBehavior gunBehavior;
     
+    public GameObject getCanva()
+    {
+        return gunBehavior.Canva;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -94,9 +104,10 @@ public class PlayersMovement : MonoBehaviour
 
         if (PauseAction.triggered)
         {
-            if (gunBehavior.Canva.transform.GetChild(0).gameObject.activeInHierarchy)
+            if (gunBehavior.Canva.transform.GetChild(0).gameObject.activeInHierarchy || gunBehavior.Canva.transform.GetChild(1).gameObject.activeInHierarchy)
             {
                 gunBehavior.Canva.transform.GetChild(0).gameObject.SetActive(false);
+                gunBehavior.Canva.transform.GetChild(1).gameObject.SetActive(false);
                 GameManager.instance.pause = false;
             }
             else
