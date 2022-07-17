@@ -34,11 +34,19 @@ public class GunBehavior : MonoBehaviour
 
     public GameObject prefabMessagePopUp;
 
+    private float crashReloadingCD = 3f;
+    private float crashReloadingTimer = 3f;
+
     // Start is called before the first frame update
     void Start()
     {
         changeMaxBulletUI(bulletMax);
         numberOfBullet = bulletMax;
+    }
+
+    private void Update()
+    {
+        crashReloadingTimer += Time.deltaTime;
     }
 
     public void changeMaxBulletUI(int amount)
@@ -105,6 +113,7 @@ public class GunBehavior : MonoBehaviour
             if (numberOfBullet == 0)
             {
                 crashReloading();
+                crashReloadingTimer = 0;
                 return shootingDirection;
             }
 
@@ -160,6 +169,11 @@ public class GunBehavior : MonoBehaviour
 
     public void reloading()
     {
+        if(crashReloadingTimer < crashReloadingCD)
+        {
+            return;
+        }
+
         clearUiBullet();
         
         timerColdownShoot = -1.5f;
