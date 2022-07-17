@@ -26,7 +26,8 @@ public class Room: MonoBehaviour
     public List<GameObject> monsters;
     public int bossAlive = 0;
 
-    public int maxNbMonsters;
+    public int maxNbMonsters = 5;
+    public int minNbMonsters = 2;
 
     [Header("Rooms prefabs")]
     public GameObject floorPrefab;
@@ -231,7 +232,7 @@ public class Room: MonoBehaviour
 
     public virtual void spawnMonsters()
     {
-        int n = Random.Range(1,maxNbMonsters);
+        int n = Random.Range(minNbMonsters,maxNbMonsters);
         for (int i = 0; i < n; i++)
         {
             int mons = Random.Range(0, GameManager.instance.monstersPrefab.Count);

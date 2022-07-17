@@ -5,6 +5,7 @@ using UnityEngine;
 public class GunBehavior : MonoBehaviour
 {
     private int bulletMax = 6;
+    private int bulletMin = 3;
     private int numberOfBullet = 0;
     public float bulletSpeed = 3.0f;
     [SerializeField]
@@ -34,7 +35,7 @@ public class GunBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        numberOfBullet = Random.Range(1, bulletMax + 1);
+        numberOfBullet = Random.Range(bulletMin, bulletMax + 1);
     }
 
     void addUiBullet()
@@ -145,7 +146,7 @@ public class GunBehavior : MonoBehaviour
         clearUiBullet();
         UIPopUp("Crash reloading");
         timerColdownShoot = -3f;
-        numberOfBullet = Random.Range(1, bulletMax + 1);
+        numberOfBullet = Random.Range(bulletMin, bulletMax + 1);
         damageModifier = 0;
     }
 
@@ -167,7 +168,7 @@ public class GunBehavior : MonoBehaviour
             addUiBlackBullet();
         }
 
-        numberOfBullet = Random.Range(1, bulletMax + 1);
+        numberOfBullet = Random.Range(bulletMin, bulletMax + 1);
 
     }
 

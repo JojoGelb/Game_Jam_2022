@@ -5,14 +5,16 @@ using UnityEngine;
 public class PlayerBullet : Bullet
 {
 
-    protected override void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
-        {
+        print("player bullet collide " +LayerMask.LayerToName(collision.gameObject.layer));
+        print("nom du truc touche" + collision.gameObject.name);
+        if (collision.gameObject.name == "Player" || collision.gameObject.layer == LayerMask.NameToLayer("bullet"))
+        {   
             return;
         }
 
-        base.OnCollisionEnter2D(collision);
+        base.OnTriggerEnter2D(collision);
 
         if (!stop)
         {

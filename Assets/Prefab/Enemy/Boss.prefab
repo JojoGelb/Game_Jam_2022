@@ -171,13 +171,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletHomingPrefab: {fileID: 6151183398832491367, guid: 9270e204e3b0b6142bb7efbf884c3b78, type: 3}
-  monsterPrefab: {fileID: 5282475165241075907, guid: f90c39c9794fdc34abcdeddf1a3fe7cd, type: 3}
+  monsterPrefab: {fileID: 9151344635952940429, guid: 49e1fb303c5ec9a4b99109f5099db3df, type: 3}
   bulletShotGunPrefab: {fileID: 3475215802735366612, guid: 4045958b7a936bb4a873d80ccb9a41b3, type: 3}
   bulletBossPrefab: {fileID: 7575566535086444501, guid: 461fce12968c51849b1b854eda121b6f, type: 3}
   minePrefab: {fileID: 3508392127222637770, guid: f799b0bb09bfd1f409ca474e9429d911, type: 3}
   speed: 3
   Viewdistance: 5
   attackCooldown: 1
+  nbMaxOfMob: 6
 --- !u!1 &7012133030536912383
 GameObject:
   m_ObjectHideFlags: 0

@@ -264,7 +264,7 @@ MonoBehaviour:
   bulletSpeed: 30
   bulletPrefab: {fileID: 5597850761795247192, guid: a1a370ad9a6a8724794f454591c00a52, type: 3}
   shootingPoint: {fileID: 1778555103296681045}
-  damage: 1
+  damage: 10
   cooldownTime: 0.5
   UIRedBullet: {fileID: 7973902985340774749, guid: 4ba4d9423f17f4f428250df15cef8aed, type: 3}
   UIYellowBullet: {fileID: 5444143849625728647, guid: 1ea7fbd797d18634e9b771e923c405f1, type: 3}
@@ -3388,15 +3388,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 7898333926496592142, guid: c5832e29ae800f44e8b09a470383f4ca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.875, y: 3.875}
+  m_Size: {x: 2.875, y: 3.875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &4151442696642869999

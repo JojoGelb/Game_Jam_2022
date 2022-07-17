@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovementSpawnedByBoss : MonoBehaviour
 {
     public GameObject target;
-    public float speed = 3f;
-    public float Viewdistance = 5f;
+    public float speed = 5f;
+    public float Viewdistance = float.PositiveInfinity;
     private Rigidbody2D rb;
     public int damage = 1;
 

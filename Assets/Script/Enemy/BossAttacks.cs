@@ -15,6 +15,7 @@ public class BossAttacks : MonoBehaviour
     public float attackCooldown = 1f;
     private float attackTime;
     private int attack;
+    public int nbMaxOfMob = 6;
 
     void Start () {
         target = GameManager.instance.player;
@@ -25,7 +26,7 @@ public class BossAttacks : MonoBehaviour
         attackTime += Time.deltaTime;
         if (attackTime >= attackCooldown) {
             attackTime = 0f;
-            attack = Random.Range(1,7);
+            attack = 5;//Random.Range(1,7);
             switch (attack)
             {
                 case 1:
@@ -61,17 +62,17 @@ public class BossAttacks : MonoBehaviour
         Destroy(bullet, 3f);
     }
     private void attack2(){ //fais spawn 2 monstres
-        GameObject monster1 = null;
-        GameObject monster2 = null;
+        for(int i=0; i<2; i++) {
+            if (GameManager.instance.currentRoom.monsters.Count <nbMaxOfMob) {
+                GameObject monster = null;
 
-        monster1 = Instantiate(monsterPrefab, new Vector3(0,0,0), Quaternion.Euler(0, 0, 0));
-        monster1.transform.SetParent(transform);
-        monster1.transform.localPosition = (transform.position-target.transform.position).normalized;
+                monster = Instantiate(monsterPrefab, new Vector3(0,0,0), Quaternion.Euler(0, 0, 0));
+                monster.transform.SetParent(transform);
+                monster.transform.localPosition = (transform.position-target.transform.position + i*transform.right).normalized;
 
-        monster2 = Instantiate(monsterPrefab, new Vector3(0,0,0), Quaternion.Euler(0, 0, 0));
-        monster2.transform.SetParent(transform);
-        monster2.transform.localPosition = (transform.position-target.transform.position).normalized;
-
+                GameManager.instance.currentRoom.monsters.Add(monster);
+            }
+        }
     }
     private void attack3(){ //3 balles en shotgun vers le joueurs
         GameObject bullet1 = null;
@@ -194,11 +195,32 @@ public class BossAttacks : MonoBehaviour
     }
     private void attack5(){ //pose une mine devant lui qui reste 5 sec sur le terrain
         GameObject mine = null;
+        Vector3 shootingDir = target.transform.position-transform.position;
+        Vector3 spacing = new Vector3(0,0,0);
+
         int damage = 5;
+
+        if(shootingDir.x>1 && shootingDir.y<0) {//bas droite
+            spacing = new Vector3(-2,2,-0.1f);
+        } else if (shootingDir.x>0 && shootingDir.y<0) {//bas
+            spacing = new Vector3(0,2,-0.1f);
+        } else if (shootingDir.x<0 && shootingDir.y<0) {//bas gauche
+            spacing = new Vector3(2,2,-0.1f);
+        } else if (shootingDir.x>1 && shootingDir.y>0 && shootingDir.y<1){ //droite
+            spacing = new Vector3(-2,0,-0.1f);
+        } else if (shootingDir.x<0 && shootingDir.y>0 && shootingDir.y<1){ //gauche
+            spacing = new Vector3(2,0,-0.1f); 
+        } else if (shootingDir.x>1 && shootingDir.y>1) {//haut droite
+            spacing = new Vector3(-2,-2,-0.1f);
+        } else if (shootingDir.x>0 && shootingDir.y>1) {//haut
+            spacing = new Vector3(0,-2,-0.1f);
+        } else if (shootingDir.x<0 && shootingDir.y>1) {//haut gauche
+            spacing = new Vector3(2,-2,-0.1f);
+        } 
 
         mine = Instantiate(minePrefab, new Vector3(0,0,0), Quaternion.Euler(0, 0, -135));
         mine.transform.SetParent(target.transform);
-        mine.transform.localPosition = new Vector3(-2, -2, 0);
+        mine.transform.localPosition = spacing;
         mine.GetComponent<Bullet>().setDamage(damage);
     }
     private void attack6(){ //mélange 2 attaques précédentes
