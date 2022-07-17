@@ -186,11 +186,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1771015348070624050}
   - component: {fileID: 1771015348070624052}
-  - component: {fileID: 4151442697203179794}
   - component: {fileID: 2986734933385068044}
   - component: {fileID: 7264583728410312126}
   - component: {fileID: 5422254465426220226}
   - component: {fileID: 1771015348070624048}
+  - component: {fileID: 5006445774874565786}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -249,21 +249,6 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
   rb: {fileID: 0}
---- !u!114 &4151442697203179794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1771015348070624053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fc1a1ded1cd5cb4a902309e7358362a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LifePoint: 10
-  MaxLifePoint: 10
-  prefabDamagePopUp: {fileID: 5280630315289201114, guid: 4102443ceab150442a8613273f672a57, type: 3}
 --- !u!114 &2986734933385068044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,6 +349,21 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &5006445774874565786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771015348070624053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3367be9e0fbdc0458656be4ed9ccb5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LifePoint: 10
+  MaxLifePoint: 10
+  prefabDamagePopUp: {fileID: 5280630315289201114, guid: 4102443ceab150442a8613273f672a57, type: 3}
 --- !u!1 &1781987532008604678
 GameObject:
   m_ObjectHideFlags: 0
