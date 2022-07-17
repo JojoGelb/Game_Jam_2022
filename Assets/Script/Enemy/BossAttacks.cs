@@ -11,7 +11,6 @@ public class BossAttacks : MonoBehaviour
     public GameObject bulletBossPrefab;
     public GameObject minePrefab;
     public float speed = 3f;
-    public float Viewdistance = 5f;
     public float attackCooldown = 1f;
     private float attackTime;
     private int attack;
@@ -26,7 +25,7 @@ public class BossAttacks : MonoBehaviour
         attackTime += Time.deltaTime;
         if (attackTime >= attackCooldown) {
             attackTime = 0f;
-            attack = 5;//Random.Range(1,7);
+            attack = Random.Range(1,7);
             switch (attack)
             {
                 case 1:
