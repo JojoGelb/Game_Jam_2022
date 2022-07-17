@@ -5,12 +5,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public AudioManager audioManager;
+    
     public GameObject player;
     public List<GameObject> monstersPrefab;
     public List<GameObject> bossPrefab;
+
+    [Header("Dont touch Zone")]
     public Room currentRoom;
     public bool pause = false;
+    public AudioManager audioManager;
 
     private void Awake()
     {
