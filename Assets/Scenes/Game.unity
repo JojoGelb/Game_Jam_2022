@@ -256,18 +256,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1771015346985013512, guid: 4b098e732b60968429a4384c2f4c3248, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771015346985013512, guid: 4b098e732b60968429a4384c2f4c3248, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771015346985013512, guid: 4b098e732b60968429a4384c2f4c3248, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1771015348070624050, guid: 4b098e732b60968429a4384c2f4c3248, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -312,21 +300,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1771015348070624052, guid: 4b098e732b60968429a4384c2f4c3248, type: 3}
-      propertyPath: speed
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771015348070624052, guid: 4b098e732b60968429a4384c2f4c3248, type: 3}
-      propertyPath: dashLength
-      value: 150
-      objectReference: {fileID: 0}
     - target: {fileID: 1771015348070624053, guid: 4b098e732b60968429a4384c2f4c3248, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2986734933385068044, guid: 4b098e732b60968429a4384c2f4c3248, type: 3}
-      propertyPath: damage
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b098e732b60968429a4384c2f4c3248, type: 3}

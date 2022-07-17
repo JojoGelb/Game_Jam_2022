@@ -106,12 +106,10 @@ public class Room: MonoBehaviour
             if (System.Math.Sign(position.y) == -1)
             {
                 positionY = position.y * maxRoomSize * tailleCarreau + (position.y * 3 * tailleCarreau) - temporatyMaxRoomSize / 2;
-                print("HERE1");
             }
             else
             {
                 positionY = position.y * maxRoomSize * tailleCarreau + (position.y * 3 * tailleCarreau);
-                print("HERE");
             }
 
             positionX = position.x * maxRoomSize * tailleCarreau + position.x * 3 * tailleCarreau - temporatyMaxRoomSize / 4;
@@ -164,7 +162,6 @@ public class Room: MonoBehaviour
                 door.transform.parent = transform;
                 door.transform.localPosition = new Vector3((maxRoomSize - 0.5f),(maxRoomSize - width) + 2*width, 0);
                 door.name = "doorTrigger Top " + position;
-                print(door.name);
                 doorsTrigger.Add(door.GetComponent<DoorTrigger>());
                 door.GetComponent<DoorTrigger>().setRoom(this);
             }
@@ -206,7 +203,6 @@ public class Room: MonoBehaviour
                 door.transform.parent = transform;
                 door.transform.localPosition = new Vector3((maxRoomSize - 1) /2 +0.5f,(maxRoomSize - width)/2 + width, 0);
                 door.name = "doorTrigger Top " + position;
-                print(door.name);
                 doorsTrigger.Add(door.GetComponent<DoorTrigger>());
                 door.GetComponent<DoorTrigger>().setRoom(this);
             }

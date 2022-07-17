@@ -24,7 +24,6 @@ public class DoorTrigger : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        print("oui");
         if (other.gameObject.name == "Player")
         {
             room.enteringRoom();
@@ -39,7 +38,6 @@ public class DoorTrigger : MonoBehaviour
     public void closeDoor()
     {
 
-        print(gameObject.transform.rotation);
         switch (gameObject.transform.rotation.eulerAngles.y)
         {
             case 0:

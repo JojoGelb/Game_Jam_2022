@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
     public float speed = 3f;
     public float Viewdistance = 5f;
     private Rigidbody2D rb;
+    public int damage = 1;
 
     void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -20,6 +21,15 @@ public class EnemyMovement : MonoBehaviour
 
         if (Vector2.Distance(target.transform.position, transform.position) < Viewdistance) {
             rb.MovePosition(rb.position + move);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.name == "Player")
+        {
+            collision.gameObject.GetComponent<Entity>().dealDamage(damage);
+            collision.gameObject.GetComponent<PlayersMovement>().knockBack(transform.position ,100f);
         }
     }
 }

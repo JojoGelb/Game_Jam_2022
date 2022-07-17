@@ -20,6 +20,8 @@ public class PlayersMovement : MonoBehaviour
     private Direction facingDirection = Direction.South;
     public Rigidbody2D rb;
 
+    Vector2 knockVector;
+
     private GunBehavior gunBehavior;
     
     // Start is called before the first frame update
@@ -64,8 +66,14 @@ public class PlayersMovement : MonoBehaviour
         {
             facingDirection = shootDiR;
         }
-        //direction sprite
 
+        //KnockBack
+        if (knockVector.magnitude > 0.2F)
+        {
+            cumulatedMove += knockVector * Time.deltaTime;
+            knockVector = Vector2.Lerp(knockVector, Vector2.zero, 5 * Time.deltaTime);
+        }
+        
         //dash
         if (dash.magnitude > 0.2F)
         {
@@ -163,6 +171,13 @@ public class PlayersMovement : MonoBehaviour
             facingDirection = Direction.North;
         }
     }
+
+    public void knockBack(Vector3 position ,float amount)
+    {
+        knockVector = (transform.position - position).normalized * amount;
+    }
+
+
 }
 
 public enum Direction {
