@@ -254,11 +254,12 @@ public class Room: MonoBehaviour
     }
 
      public virtual void spawnChest() {
+        print("i spawned a chest");
         int n = Random.Range(0,3);
         GameObject powerUp = Instantiate(GameManager.instance.itemsPrefab[n], new Vector3(0,0,-0.1f), Quaternion.identity);
             
         powerUp.transform.parent = transform;
-        powerUp.transform.localPosition = new Vector3((maxRoomSize / 2) * 2, maxRoomSize / 2, -0.1f);
+        powerUp.transform.localPosition = new Vector3((maxRoomSize / 2), maxRoomSize / 2, -0.1f);
      }
 
     public void enteringRoom()
@@ -278,6 +279,7 @@ public class Room: MonoBehaviour
                 spawnBoss();
             } else if (roomType == RoomType.chest) {
                 spawnChest();
+                roomCleared();
             }
         }
     }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GunBehavior : MonoBehaviour
 {
-    private int bulletMax = 6;
-    private int bulletMin = 3;
+    public int bulletMax = 6;
+    public int bulletMin = 3;
     private int numberOfBullet = 0;
     public float bulletSpeed = 3.0f;
     [SerializeField]

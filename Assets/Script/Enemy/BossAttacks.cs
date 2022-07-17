@@ -58,7 +58,7 @@ public class BossAttacks : MonoBehaviour
         bullet.transform.localPosition = (target.transform.position-transform.position).normalized;
         bullet.GetComponent<Bullet>().setDamage(damage);
 
-        Destroy(bullet, 3f);
+        Destroy(bullet, 4f);
     }
     private void attack2(){ //fais spawn 2 monstres
         for(int i=0; i<2; i++) {

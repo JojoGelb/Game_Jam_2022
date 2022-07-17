@@ -676,7 +676,7 @@ public class MapCreator : MonoBehaviour
 
                 break;
         }
-        room.roomState = Room.RoomState.finished;
+        room.roomState = Room.RoomState.ready;
         rooms.Add(room);
     }
 
