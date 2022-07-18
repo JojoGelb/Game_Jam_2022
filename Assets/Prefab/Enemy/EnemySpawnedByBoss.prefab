@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 17
+  speed: 8
   Viewdistance: Infinity
   damage: 1
 --- !u!50 &3913351381616603077

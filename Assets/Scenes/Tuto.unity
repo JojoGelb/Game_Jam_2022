@@ -23779,7 +23779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc062889c8ab88d41a1b1c780c1719d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  speed: 20
   dashCooldown: 1
   dashLength: 60
   rb: {fileID: 0}

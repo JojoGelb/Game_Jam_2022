@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2382133929527881944, guid: 729f7d0235eb5c6449bcad23e52c28ad, type: 3}
-  speed: 17
+  speed: 8
   Viewdistance: 15
   damage: 1
 --- !u!50 &715653771

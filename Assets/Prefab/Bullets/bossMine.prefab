@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7072125271913858720}
   - component: {fileID: 3560750092485424664}
   - component: {fileID: 4236288976143087973}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bossMine
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -29,7 +29,7 @@ public class EnemyMovement : MonoBehaviour
         if(collision.gameObject.name == "Player")
         {
             collision.gameObject.GetComponent<Entity>().dealDamage(damage);
-            collision.gameObject.GetComponent<PlayersMovement>().knockBack(transform.position ,100f);
+            collision.gameObject.GetComponent<PlayersMovement>().knockBack(transform.position ,40f);
         }
     }
 

@@ -67,7 +67,6 @@ public class PlayersMovement : MonoBehaviour
         if (ReloadAction.triggered)
         {
             gunBehavior.reloading();
-            print("reloading");
         }
 
         //shoot
